@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 require('dotenv').config();
 
@@ -10,6 +11,10 @@ const port = process.env.port || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(session({
+    secret : 'keyboard cat',
+    cookie : {secure: true}
+}));
 
 //mongoDB
 const uri = process.env.ATLAS_URI;
