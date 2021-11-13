@@ -1,9 +1,21 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
 
-router.route('/').get((req, res) => {
-    User.find()
-        .then(user => res.json(user))
+router.route('/').post((req, res) => {
+    User.find({
+        "username": req.body.username,
+        "password": req.body.password
+    })
+        .then(user => {
+            if(user.length == 0){
+                res.status(400).json({
+                    status: "error",
+                    message: "Username or password not match"
+                });
+            } else {
+                res.json(user);
+            }
+        })
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -18,7 +30,7 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:id').delete((req, res) => {
+router.route('/delete/:id').delete((req, res) => {
     User.findByIdAndDelete(req.params.id)
         .then(user => res.json('User Deleted!'))
         .catch(err => res.status(400).json('Error: ' + err));
