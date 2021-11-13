@@ -1,27 +1,54 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import {
+  Navbar,
+  Container,
+  Nav,
+  NavDropdown,
+  Offcanvas,
+  Form,
+  Button,
+  FormControl,
+} from "react-bootstrap";
 
-export default class Navbar extends Component {
-    render() {
-        return (
-            <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-                <Link to="/" className="navbar-brand">Edian</Link>
-                <div className="collapse navbar-collapse">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="navbar-item">
-                            <Link to="/add" className="nav-link">Add User</Link>
-                        </li>
-                        <li className="navbar-item">
-                            <Link to="/:id" className="nav-link">Create Exercise Log</Link>
-                        </li>
-                    </ul>
-                </div>
-                <div className="account navbar">
-                    <li>
-                        
-                    </li>
-                </div>
-            </nav>
-        );
-    }
+export default class Navhead extends Component {
+  render() {
+    return (
+      <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">EDIAN</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#features">Features</Nav.Link>
+              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">
+                  Something
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">
+                  Separated link
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Nav>
+              <Form className="d-flex">
+                <FormControl
+                  type="search"
+                  placeholder="Search"
+                  className="me-2"
+                  aria-label="Search"
+                />
+                <Button variant="outline-success">Search</Button>
+              </Form>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    );
+  }
 }
