@@ -1,13 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navhead from "./components/navbar.component";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  return (
-    <div className="container">
-    
-    </div>
-  );
+  return <Navhead></Navhead>;
 }
 
 export default App;
